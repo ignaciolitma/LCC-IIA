@@ -89,17 +89,15 @@ def search(problem, fringe):
 def depthFirstSearch(problem):
 
     pila = Stack()
-    nodosVisitados = []
-    pila.push((problem.getStartState(), [], 0))
+    pila.push((problem.getStartState(), [], 0, [])) 
     while not pila.isEmpty() :
-        (nodo, acciones, costo) = pila.pop()
-        nodosVisitados.append(nodo)
+        (nodo, acciones, costo, ancestros) = pila.pop()
         if problem.isGoalState(nodo) :
             return acciones
         else :
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                if suc not in nodosVisitados:
-                    pila.push((suc, acciones + [accion], costo + nuevoCosto))
+                if suc not in ancestros:
+                    pila.push((suc, acciones + [accion], costo + nuevoCosto, ancestros + [nodo]))
 
 #TODO -- buscar algoritmo sin utilizar nodosVisitados
 # Costo = 130
