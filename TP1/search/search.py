@@ -88,6 +88,8 @@ def search(problem, fringe):
 
 def depthFirstSearch(problem):
 
+    # stack = Stack()
+    # return search(problem, stack)
     pila = Stack()
     pila.push((problem.getStartState(), [], 0, [])) 
     while not pila.isEmpty() :
@@ -119,38 +121,38 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """
     Search the shallowest nodes in the search tree first.
-    """
+    """ 
+    # queue = Queue()
+    # return search(problem, queue)
+
     cola = Queue()
-    nodosVisitados = []
+    nodosExpandidos = []
     cola.push((problem.getStartState(), [], 0))
-    while not cola.isEmpty() :
+    while not cola.isEmpty():
         (nodo, acciones, costo) = cola.pop()
-        nodosVisitados.append(nodo)
         if problem.isGoalState(nodo) :
             return acciones
-        else :
+        elif nodo not in nodosExpandidos:
+            nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                if suc not in nodosVisitados:
-                    cola.push((suc, acciones + [accion], costo + nuevoCosto))
+                cola.push((suc, acciones + [accion], costo + nuevoCosto))
 
 #primero a lo ancho costo = 68
 
 def uniformCostSearch(problem):
     "Search the node of least total cost first."
     cola = PriorityQueue()
-    cola.push((problem.getStartState(), [], 0, []), 0)
+    nodosExpandidos = []
+    cola.push((problem.getStartState(), [], 0), 0)
     while not cola.isEmpty() :
-        (nodo, acciones, costo, listasCosto) = cola.pop()
+        (nodo, acciones, costo) = cola.pop()
         if problem.isGoalState(nodo) :
             return acciones
-        else :
+        elif nodo not in nodosExpandidos:
+            nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                l = [(x, y) for (x, y) in listasCosto if x == suc]
-                if  (l == []) or (l[0][1] > costo + nuevoCosto) :
-                    nuevaListaCosto = [(x, y) for (x,y) in listasCosto if x != suc]
-                    nuevaListaCosto += [(suc,costo+nuevoCosto)]
-                    cola.push((suc, acciones + [accion], costo + nuevoCosto, nuevaListaCosto), costo + nuevoCosto)
-
+                cola.push((suc, acciones + [accion], costo + nuevoCosto), costo + nuevoCosto)
+    assert(False)
 #costo = 1
 
 def nullHeuristic(state, problem=None):
@@ -163,34 +165,16 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     "Search the node that has the lowest combined cost and heuristic first."
     cola = PriorityQueue()
-    cola.push((problem.getStartState(), [], 0, []), 0)
+    nodosExpandidos = []
+    cola.push((problem.getStartState(), [], 0), 0)
     while not cola.isEmpty() :
-        (nodo, acciones, costo, listasCosto) = cola.pop()
+        (nodo, acciones, costo) = cola.pop()
         if problem.isGoalState(nodo) :
             return acciones
-        else : 
+        elif nodo not in nodosExpandidos:
+            nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                l = [(x, y) for (x, y) in listasCosto if x == suc]
-                if  (l == []) or (l[0][1] > costo + nuevoCosto + heuristic(suc, problem)) :
-                    nuevaListaCosto = [(x, y) for (x,y) in listasCosto if x != suc]
-                    nuevaListaCosto += [(suc,costo+nuevoCosto + heuristic(suc, problem))]
-                    cola.push((suc, acciones + [accion], costo + nuevoCosto + heuristic(suc, problem), nuevaListaCosto), costo + nuevoCosto + heuristic(suc, problem))
-
-    # cola = PriorityQueue()
-    # nodosVisitados = []
-    
-    # cola.push((problem.getStartState(), [], 0), 0)
-    # while not cola.isEmpty() :
-    #     (nodo, acciones, costo) = cola.pop()
-    #     nodosVisitados.append(nodo)
-    #     if problem.isGoalState(nodo) :
-    #         return acciones
-    #     else :
-    #         for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-    #             if suc not in nodosVisitados:
-    #                 cola.push((suc, acciones + [accion], costo + nuevoCosto + heuristic(suc, problem)), costo + nuevoCosto + heuristic(suc, problem))
-
-# Costo = 210
+                cola.push((suc, acciones + [accion], costo + nuevoCosto + heuristic(suc,problem)), costo + nuevoCosto + heuristic(suc,problem))
 
 # Abbreviations
 bfs = breadthFirstSearch
