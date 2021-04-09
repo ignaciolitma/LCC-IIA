@@ -285,8 +285,9 @@ class CornersProblem(search.SearchProblem):
     def getStartState(self):
         "Returns the start state (in your state space, not the full Pacman state space)"
         "*** YOUR CODE HERE ***"
-
-        return (self.startingPosition, self.corners)
+        posicionInicial = self.startingPosition
+        esquinas = self.corners
+        return (posicionInicial, esquinas)
 
     def isGoalState(self, state):
         "Returns whether this search state is a goal state of the problem"
@@ -304,7 +305,6 @@ class CornersProblem(search.SearchProblem):
          required to get there, and 'stepCost' is the incremental
          cost of expanding to that successor
         """
-
         successors = []
         for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
             # Add a successor state to the successor list if the action is legal
@@ -313,14 +313,12 @@ class CornersProblem(search.SearchProblem):
             (dx, dy) = Actions.directionToVector(action)
             (nextx, nexty) = int(x + dx), int(y + dy)
             hitsWall = self.walls[nextx][nexty]
-            
             "*** YOUR CODE HERE ***"
             if not hitsWall:
                 nextState = (nextx, nexty)
                 cost = 1
-                corners = state[1]
-                if nextState in state[1]:
-                    corners = filter(lambda x: x!=nextState, state[1])
+                # if nextState in state[1]:
+                corners = filter(lambda x: x != nextState, state[1])
                 successors.append( ((nextState, corners), action, cost) )
         
         self._expanded += 1
@@ -356,17 +354,14 @@ def cornersHeuristic(state, problem):
     corners = problem.corners # These are the corner coordinates
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
           
-    #xy1 = position
-    # xy2 = problem.goal
-    # return abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
     "*** YOUR CODE HERE ***"
     (x,y) = state[0]
     if len(state[1]) != 0:
-        var = sum(list(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1])))
+        var = sum(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
         return var
     else:
         return 0
-    
+    # Esta heuristica expande 906.
     # return len (state[1]) # Default to trivial solution
 
 class AStarCornersAgent(SearchAgent):
@@ -456,8 +451,13 @@ def foodHeuristic(state, problem):
       problem.heuristicInfo['wallCount'] = problem.walls.count()
     Subsequent calls to this heuristic can access problem.heuristicInfo['wallCount']
     """
-    position, foodGrid = state
+    
     "*** YOUR CODE HERE ***"
+    (position, foodGrid) = state
+    (x,y) = position
+    if len(state[1].asList()) != 0:
+        var = sum(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1].asList()))
+        return var
     return 0
 
 class ClosestDotSearchAgent(SearchAgent):
