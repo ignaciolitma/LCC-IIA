@@ -87,19 +87,21 @@ def search(problem, fringe):
                 fringe.push(candidate)
 
 def depthFirstSearch(problem):
-
-    # stack = Stack()
-    # return search(problem, stack)
+    estadoInicial = problem.getStartState()
+    acciones = []
+    costo = 0
+    ancestros = []
     pila = Stack()
-    pila.push((problem.getStartState(), [], 0, [])) 
+    pila.push((estadoInicial, acciones, costo, ancestros)) 
     while not pila.isEmpty() :
         (nodo, acciones, costo, ancestros) = pila.pop()
+        ancestros += [nodo]
         if problem.isGoalState(nodo) :
             return acciones
         else :
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
                 if suc not in ancestros:
-                    pila.push((suc, acciones + [accion], costo + nuevoCosto, ancestros + [nodo]))
+                    pila.push((suc, acciones + [accion], costo + nuevoCosto, ancestros))
 
 #TODO -- buscar algoritmo sin utilizar nodosVisitados
 # Costo = 130
@@ -122,12 +124,12 @@ def breadthFirstSearch(problem):
     """
     Search the shallowest nodes in the search tree first.
     """ 
-    # queue = Queue()
-    # return search(problem, queue)
-
+    estadoInicial = problem.getStartState()
+    acciones = []
+    costo = 0
     cola = Queue()
     nodosExpandidos = []
-    cola.push((problem.getStartState(), [], 0))
+    cola.push((estadoInicial, acciones, costo))
     while not cola.isEmpty():
         (nodo, acciones, costo) = cola.pop()
         if problem.isGoalState(nodo) :
@@ -142,8 +144,12 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
     "Search the node of least total cost first."
     cola = PriorityQueue()
+    estadoInicial = problem.getStartState()
+    acciones = []
+    costo = 0
+    prioridad = 0
     nodosExpandidos = []
-    cola.push((problem.getStartState(), [], 0), 0)
+    cola.push((estadoInicial, acciones, costo), prioridad)
     while not cola.isEmpty() :
         (nodo, acciones, costo) = cola.pop()
         if problem.isGoalState(nodo) :
@@ -151,9 +157,8 @@ def uniformCostSearch(problem):
         elif nodo not in nodosExpandidos:
             nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                cola.push((suc, acciones + [accion], costo + nuevoCosto), costo + nuevoCosto)
-    assert(False)
-#costo = 1
+                prioridad = (costo + nuevoCosto)
+                cola.push((suc, acciones + [accion], costo + nuevoCosto), prioridad)
 
 def nullHeuristic(state, problem=None):
     """
@@ -165,8 +170,13 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     "Search the node that has the lowest combined cost and heuristic first."
     cola = PriorityQueue()
+    estadoInicial = problem.getStartState()
+    acciones = []
+    costo = 0
+    prioridad = 0
+    cola = PriorityQueue()
     nodosExpandidos = []
-    cola.push((problem.getStartState(), [], 0), 0)
+    cola.push((estadoInicial, acciones, costo), prioridad)
     while not cola.isEmpty() :
         (nodo, acciones, costo) = cola.pop()
         if problem.isGoalState(nodo) :
@@ -174,7 +184,9 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         elif nodo not in nodosExpandidos:
             nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                cola.push((suc, acciones + [accion], costo + nuevoCosto + heuristic(suc,problem)), costo + nuevoCosto + heuristic(suc,problem))
+                prioridad = costo + nuevoCosto + heuristic(suc,problem)
+                newCosto = prioridad
+                cola.push((suc, acciones + [accion], newCosto), prioridad)
 
 # Abbreviations
 bfs = breadthFirstSearch
