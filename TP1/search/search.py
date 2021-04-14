@@ -192,25 +192,33 @@ def nullHeuristic(state, problem=None):
     return 0
 
 def aStarSearch(problem, heuristic=nullHeuristic):
-    "Search the node that has the lowest combined cost and heuristic first."
-    cola = PriorityQueue()
-    estadoInicial = problem.getStartState()
-    acciones = []
-    costo = 0
-    prioridad = 0
-    cola = PriorityQueue()
+    """
+    Search the node that has the lowest combined cost and heuristic first.
+    bigMaze: cost = 210, nodes = 585.
+    """
+
+    cola            = PriorityQueue()
+    estadoInicial   = problem.getStartState()
+    acciones        = []
+    costo           = 0
+    prioridad       = 0
+    cola            = PriorityQueue()
     nodosExpandidos = []
+
     cola.push((estadoInicial, acciones, costo), prioridad)
     while not cola.isEmpty() :
         (nodo, acciones, costo) = cola.pop()
+
         if problem.isGoalState(nodo) :
             return acciones
-        elif nodo not in nodosExpandidos:
+
+        if nodo not in nodosExpandidos:
             nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                prioridad = costo + nuevoCosto + heuristic(suc,problem)
-                newCosto = prioridad
-                cola.push((suc, acciones + [accion], newCosto), prioridad)
+                accionesSuc = acciones + [accion]
+                costoSuc    = costo + nuevoCosto + heuristic(suc, problem)
+                prioridad   = costo + nuevoCosto + heuristic(suc, problem)
+                cola.push((suc, accionesSuc, costoSuc), prioridad)
 
 # Abbreviations
 bfs = breadthFirstSearch
