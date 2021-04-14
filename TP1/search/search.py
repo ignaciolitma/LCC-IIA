@@ -87,24 +87,31 @@ def search(problem, fringe):
                 fringe.push(candidate)
 
 def depthFirstSearch(problem):
+    """
+    tinyMaze:  cost = 10,  nodes = 15.
+    medimMaze: cost = 130, nodes = 146.
+    bigMaze:   cost = 210, nodes = 390.
+    """
+
     estadoInicial = problem.getStartState()
-    acciones = []
-    costo = 0
-    ancestros = []
-    pila = Stack()
-    pila.push((estadoInicial, acciones, costo, ancestros)) 
-    while not pila.isEmpty() :
+    acciones      = []
+    costo         = 0
+    ancestros     = []
+    pila          = Stack()
+
+    pila.push((estadoInicial, acciones, costo, ancestros))
+    while not pila.isEmpty():
         (nodo, acciones, costo, ancestros) = pila.pop()
         ancestros += [nodo]
-        if problem.isGoalState(nodo) :
-            return acciones
-        else :
-            for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                if suc not in ancestros:
-                    pila.push((suc, acciones + [accion], costo + nuevoCosto, ancestros))
 
-#TODO -- buscar algoritmo sin utilizar nodosVisitados
-# Costo = 130
+        if problem.isGoalState(nodo):
+            return acciones
+
+        for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
+            if suc not in ancestros:
+                accionesSuc = acciones + [accion]
+                costoSuc    = costo + nuevoCosto
+                pila.push((suc, accionesSuc, costoSuc, ancestros))
 
     """
     Search the deepest nodes in the search tree first
