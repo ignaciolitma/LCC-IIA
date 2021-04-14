@@ -92,27 +92,7 @@ def depthFirstSearch(problem):
     medimMaze: cost = 130, nodes = 146.
     bigMaze:   cost = 210, nodes = 390.
     """
-
-    estadoInicial = problem.getStartState()
-    acciones      = []
-    costo         = 0
-    ancestros     = []
-    pila          = Stack()
-
-    pila.push((estadoInicial, acciones, costo, ancestros))
-    while not pila.isEmpty():
-        (nodo, acciones, costo, ancestros) = pila.pop()
-        ancestros += [nodo]
-
-        if problem.isGoalState(nodo):
-            return acciones
-
-        for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-            if suc not in ancestros:
-                accionesSuc = acciones + [accion]
-                costoSuc    = costo + nuevoCosto
-                pila.push((suc, accionesSuc, costoSuc, ancestros))
-
+    return generalSearch(problem, nullHeuristic, Stack, True)
     """
     Search the deepest nodes in the search tree first
 
@@ -133,26 +113,7 @@ def breadthFirstSearch(problem):
     mediumMaze: cost = 68,  nodes = 269.
     bigMaze:    cost = 210, nodes = 620.
     """
-
-    estadoInicial   = problem.getStartState()
-    acciones        = []
-    costo           = 0
-    cola            = Queue()
-    nodosExpandidos = []
-
-    cola.push((estadoInicial, acciones, costo))
-    while not cola.isEmpty():
-        (nodo, acciones, costo) = cola.pop()
-
-        if problem.isGoalState(nodo):
-            return acciones
-
-        if nodo not in nodosExpandidos:
-            nodosExpandidos.append(nodo)
-            for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                accionesSuc = acciones + [accion]
-                costoSuc    = costo + nuevoCosto
-                cola.push((suc, accionesSuc, costoSuc))
+    return generalSearch(problem, nullHeuristic, Queue, False)
 
 def uniformCostSearch(problem):
     """
@@ -161,28 +122,7 @@ def uniformCostSearch(problem):
     mediumDottedMaze: cost = 1,           nodes = 186.
     mediumScaryMaze:  cost = 68719479864, nodes = 108.
     """
-
-    cola            = PriorityQueue()
-    estadoInicial   = problem.getStartState()
-    acciones        = []
-    costo           = 0
-    prioridad       = 0
-    nodosExpandidos = []
-
-    cola.push((estadoInicial, acciones, costo), prioridad)
-    while not cola.isEmpty():
-        (nodo, acciones, costo) = cola.pop()
-
-        if problem.isGoalState(nodo):
-            return acciones
-
-        if nodo not in nodosExpandidos:
-            nodosExpandidos.append(nodo)
-            for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                accionesSuc = acciones + [accion]
-                costoSuc    = costo + nuevoCosto
-                prioridad   = costo + nuevoCosto
-                cola.push((suc, accionesSuc, costoSuc), prioridad)
+    return generalSearch(problem, nullHeuristic, PriorityQueue, False)
 
 def nullHeuristic(state, problem=None):
     """
@@ -196,32 +136,47 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     Search the node that has the lowest combined cost and heuristic first.
     bigMaze: cost = 210, nodes = 585.
     """
-
-    cola            = PriorityQueue()
-    estadoInicial   = problem.getStartState()
-    acciones        = []
-    costo           = 0
-    prioridad       = 0
-    cola            = PriorityQueue()
-    nodosExpandidos = []
-
-    cola.push((estadoInicial, acciones, costo), prioridad)
-    while not cola.isEmpty() :
-        (nodo, acciones, costo) = cola.pop()
-
-        if problem.isGoalState(nodo) :
-            return acciones
-
-        if nodo not in nodosExpandidos:
-            nodosExpandidos.append(nodo)
-            for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                accionesSuc = acciones + [accion]
-                costoSuc    = costo + nuevoCosto + heuristic(suc, problem)
-                prioridad   = costo + nuevoCosto + heuristic(suc, problem)
-                cola.push((suc, accionesSuc, costoSuc), prioridad)
+    return generalSearch(problem, heuristic, PriorityQueue, False)
 
 # Abbreviations
 bfs = breadthFirstSearch
 dfs = depthFirstSearch
 astar = aStarSearch
 ucs = uniformCostSearch
+
+def push(estructura, valor, prioridad):
+    try:
+        estructura.push(valor, prioridad)
+    except:
+        estructura.push(valor)
+
+def generalSearch(problem, heuristic, structure, ancestors):
+    costo           = 0
+    prioridad       = 0
+    acciones        = []
+    ancestros       = []
+    nodosExpandidos = []
+    estructura      = structure()
+    estadoInicial   = problem.getStartState()
+
+    push(estructura, (estadoInicial, acciones, costo, ancestros), prioridad)
+    while not estructura.isEmpty():
+        (nodo, acciones, costo, ancestros) = estructura.pop()
+
+        if problem.isGoalState(nodo):
+            return acciones
+
+        if nodo in nodosExpandidos:
+            continue
+
+        if ancestors:
+            ancestros += [nodo]
+        else:
+            nodosExpandidos.append(nodo)
+
+        for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
+            if not ancestors or suc not in ancestros:
+                accionesSuc = acciones + [accion]
+                costoSuc    = costo + nuevoCosto + heuristic(suc, problem)
+                prioridad   = costo + nuevoCosto + heuristic(suc, problem)
+                push(estructura, (suc, accionesSuc, costoSuc, ancestros), prioridad)
