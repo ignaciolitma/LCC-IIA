@@ -155,23 +155,34 @@ def breadthFirstSearch(problem):
                 cola.push((suc, accionesSuc, costoSuc))
 
 def uniformCostSearch(problem):
-    "Search the node of least total cost first."
-    cola = PriorityQueue()
-    estadoInicial = problem.getStartState()
-    acciones = []
-    costo = 0
-    prioridad = 0
+    """
+    Search the node of least total cost first.
+    mediumMaze:       cost = 68,          nodes = 268.
+    mediumDottedMaze: cost = 1,           nodes = 186.
+    mediumScaryMaze:  cost = 68719479864, nodes = 108.
+    """
+
+    cola            = PriorityQueue()
+    estadoInicial   = problem.getStartState()
+    acciones        = []
+    costo           = 0
+    prioridad       = 0
     nodosExpandidos = []
+
     cola.push((estadoInicial, acciones, costo), prioridad)
-    while not cola.isEmpty() :
+    while not cola.isEmpty():
         (nodo, acciones, costo) = cola.pop()
-        if problem.isGoalState(nodo) :
+
+        if problem.isGoalState(nodo):
             return acciones
-        elif nodo not in nodosExpandidos:
+
+        if nodo not in nodosExpandidos:
             nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                prioridad = (costo + nuevoCosto)
-                cola.push((suc, acciones + [accion], costo + nuevoCosto), prioridad)
+                accionesSuc = acciones + [accion]
+                costoSuc    = costo + nuevoCosto
+                prioridad   = costo + nuevoCosto
+                cola.push((suc, accionesSuc, costoSuc), prioridad)
 
 def nullHeuristic(state, problem=None):
     """
