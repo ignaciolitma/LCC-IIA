@@ -130,23 +130,29 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """
     Search the shallowest nodes in the search tree first.
-    """ 
-    estadoInicial = problem.getStartState()
-    acciones = []
-    costo = 0
-    cola = Queue()
+    mediumMaze: cost = 68,  nodes = 269.
+    bigMaze:    cost = 210, nodes = 620.
+    """
+
+    estadoInicial   = problem.getStartState()
+    acciones        = []
+    costo           = 0
+    cola            = Queue()
     nodosExpandidos = []
+
     cola.push((estadoInicial, acciones, costo))
     while not cola.isEmpty():
         (nodo, acciones, costo) = cola.pop()
-        if problem.isGoalState(nodo) :
+
+        if problem.isGoalState(nodo):
             return acciones
-        elif nodo not in nodosExpandidos:
+
+        if nodo not in nodosExpandidos:
             nodosExpandidos.append(nodo)
             for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
-                cola.push((suc, acciones + [accion], costo + nuevoCosto))
-
-#primero a lo ancho costo = 68
+                accionesSuc = acciones + [accion]
+                costoSuc    = costo + nuevoCosto
+                cola.push((suc, accionesSuc, costoSuc))
 
 def uniformCostSearch(problem):
     "Search the node of least total cost first."
