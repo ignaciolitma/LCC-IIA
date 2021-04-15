@@ -356,13 +356,63 @@ def cornersHeuristic(state, problem):
           
     "*** YOUR CODE HERE ***"
     (x,y) = state[0]
+
+    paredes = 0.0
+    libres  = 0.0
+    for fila in walls:
+        for booleano in fila:
+            if booleano:
+                paredes += 1.0
+            else:
+                libres += 1.0
+    pl = paredes / libres
+    print(pl)
+
     if len(state[1]) != 0:
-        var = sum(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
-        return var
+        su = sum(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
+        mi = min(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
+        ma = max(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
+        av = su / len(state[1])
+        total = mi - ma
+        """
+        total += 1 if walls[x+1][y] else 0
+        total += 1 if walls[x][y+1] else 0
+        total += 1 if walls[x-1][y+1] else 0
+        total += 1 if walls[x+1][y-1] else 0
+        total += 1 if walls[x-1][y-1] else 0
+        total += 1 if walls[x+1][y+1] else 0
+        total += 1 if walls[x-1][y] else 0
+        total += 1 if walls[x][y-1] else 0
+        """
+        return total
     else:
         return 0
-    # Esta heuristica expande 906.
-    # return len (state[1]) # Default to trivial solution
+    """
+    MEDIUMCORNERS
+    =============
+    manhattanMin - manhattanMax: costo 124, expandidos 224.
+    manhattanMin - manhattanSum: costo 192, expandidos 413.
+
+    nullHeuristic:               costo 106, expandidos 1982.
+    cornersCount:                costo 106, expandidos 1277.
+    manhattanSum - manhattanMax: costo 106, expandidos 872.
+    manhattanSum - manhattanMin: costo 106, expandidos 744.
+    manhattanSum - manhattanAvg: costo 106, expandidos 733.
+
+    BIGCORNERS
+    ==========
+    manhattanMin - manhattanMax: costo 326, expandidos 827.
+    manhattanMin - manhattanSum: costo 332, expandidos 879.
+
+    nullHeuristic:               costo 162, expandidos 7952.
+    manhattanMin:                costo 162, expandidos 6594.
+    manhattanMax:                costo 162, expandidos 6107.
+    manhattanAvg:                costo 162, expandidos 6083.
+    cornersCount:                costo 162, expandidos 5954.
+    manhattanSum - manhattanMin: costo 162, expandidos 3687.
+    manhattanSum - manhattanAvg: costo 162, expandidos 3088.
+    manhattanSum - manhattanMax: costo 162, expandidos 2279.
+    """
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
