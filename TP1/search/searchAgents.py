@@ -369,7 +369,7 @@ def cornersHeuristic(state, problem):
     (x, y) = state[0]
     su = sum(map(manhattan, state[1]))
 
-    return min([h, su])
+    return max([h, su])
 
     """
     MEDIUMCORNERS
@@ -377,8 +377,8 @@ def cornersHeuristic(state, problem):
     nullHeuristic:               costo 106, expandidos 1982.
     cornersCount:                costo 106, expandidos 1908.
     manhattanMin:                costo 106, expandidos 1491.
-    manhattanSum - manhattanMax: costo 106, expandidos 1401.
     manhattanAvg:                costo 106, expandidos 1319.
+    manhattanSum - manhattanMax: costo 106, expandidos 1401.
     manhattanSum - manhattanAvg: costo 106, expandidos 1195.
     manhattanMax:                costo 106, expandidos 1139.
     manhattanSum - manhattanMin: costo 106, expandidos 751.
@@ -401,7 +401,7 @@ def cornersHeuristic(state, problem):
     all:                         costo 162, expandidos 1048.
     """
 
-class AStarCornersAgent(SearchAgent):
+class AStarCornersAgent(SearchAgent):  
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
     def __init__(self):
         self.searchFunction = lambda prob: search.aStarSearch(prob, cornersHeuristic)

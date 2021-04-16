@@ -179,8 +179,8 @@ def generalSearch(problem, heuristic, structure, ancestors):
                 accionesSuc = acciones + [accion]
                 costoSuc    = costo + nuevoCosto
                 prioridad   = costo + nuevoCosto + heuristic(suc, problem)
-                if (costo + heuristic(nodo.problem) <= prioridad):
+                if (costo + heuristic(nodo, problem) <= prioridad):
                     push(estructura, (suc, accionesSuc, costoSuc, ancestros), prioridad)
                 else:
-                    push(estructura, (suc, accionesSuc, costoSuc, ancestros), costo + heuristic(nodo.problem))
+                    push(estructura, (suc, accionesSuc, costoSuc, ancestros), costo + heuristic(nodo, problem))
 
