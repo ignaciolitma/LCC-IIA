@@ -353,65 +353,52 @@ def cornersHeuristic(state, problem):
     """
     corners = problem.corners # These are the corner coordinates
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
-          
+
     "*** YOUR CODE HERE ***"
-    (x,y) = state[0]
+    manhattan = lambda (a, b): abs(x - a) + abs(y - b)
 
-    paredes = 0.0
-    libres  = 0.0
-    for fila in walls:
-        for booleano in fila:
-            if booleano:
-                paredes += 1.0
-            else:
-                libres += 1.0
-    pl = paredes / libres
-    print(pl)
+    h = 0
+    (x, y) = state[0]
+    copy = sorted(state[1], key = manhattan)
+    while copy:
+        (a, b) = copy.pop(0)
+        h += abs(x - a) + abs(y - b)
+        (x, y) = (a, b)
+        copy.sort(key = manhattan)
 
-    if len(state[1]) != 0:
-        su = sum(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
-        mi = min(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
-        ma = max(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
-        av = su / len(state[1])
-        total = mi - ma
-        """
-        total += 1 if walls[x+1][y] else 0
-        total += 1 if walls[x][y+1] else 0
-        total += 1 if walls[x-1][y+1] else 0
-        total += 1 if walls[x+1][y-1] else 0
-        total += 1 if walls[x-1][y-1] else 0
-        total += 1 if walls[x+1][y+1] else 0
-        total += 1 if walls[x-1][y] else 0
-        total += 1 if walls[x][y-1] else 0
-        """
-        return total
-    else:
-        return 0
+    (x, y) = state[0]
+    su = sum(map(manhattan, state[1]))
+
+    return min([h, su])
+
     """
     MEDIUMCORNERS
     =============
-    manhattanMin - manhattanMax: costo 124, expandidos 224.
-    manhattanMin - manhattanSum: costo 192, expandidos 413.
-
     nullHeuristic:               costo 106, expandidos 1982.
-    cornersCount:                costo 106, expandidos 1277.
-    manhattanSum - manhattanMax: costo 106, expandidos 872.
-    manhattanSum - manhattanMin: costo 106, expandidos 744.
-    manhattanSum - manhattanAvg: costo 106, expandidos 733.
+    cornersCount:                costo 106, expandidos 1908.
+    manhattanMin:                costo 106, expandidos 1491.
+    manhattanSum - manhattanMax: costo 106, expandidos 1401.
+    manhattanAvg:                costo 106, expandidos 1319.
+    manhattanSum - manhattanAvg: costo 106, expandidos 1195.
+    manhattanMax:                costo 106, expandidos 1139.
+    manhattanSum - manhattanMin: costo 106, expandidos 751.
+    h:                           costo 106, expandidos 692.
+    manhattanSum:                costo 106, expandidos 502.
+    all:                         costo 106, expandidos 436.
 
     BIGCORNERS
     ==========
-    manhattanMin - manhattanMax: costo 326, expandidos 827.
-    manhattanMin - manhattanSum: costo 332, expandidos 879.
-
     nullHeuristic:               costo 162, expandidos 7952.
-    manhattanMin:                costo 162, expandidos 6594.
-    manhattanMax:                costo 162, expandidos 6107.
-    manhattanAvg:                costo 162, expandidos 6083.
-    cornersCount:                costo 162, expandidos 5954.
-    manhattanSum - manhattanMin: costo 162, expandidos 3687.
-    manhattanSum - manhattanAvg: costo 162, expandidos 3088.
-    manhattanSum - manhattanMax: costo 162, expandidos 2279.
+    cornersCount:                costo 162, expandidos 7821.
+    manhattanSum - manhattanMax: costo 162, expandidos 6233.
+    manhattanMin:                costo 162, expandidos 5862.
+    manhattanAvg:                costo 162, expandidos 5195.
+    manhattanSum - manhattanAvg: costo 162, expandidos 5133.
+    manhattanMax:                costo 162, expandidos 4399.
+    manhattanSum - manhattanMin: costo 162, expandidos 2432.
+    h:                           costo 162, expandidos 1740.
+    manhattanSum:                costo 162, expandidos 1139.
+    all:                         costo 162, expandidos 1048.
     """
 
 class AStarCornersAgent(SearchAgent):
