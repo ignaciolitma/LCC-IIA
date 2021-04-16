@@ -491,11 +491,21 @@ def foodHeuristic(state, problem):
     
     "*** YOUR CODE HERE ***"
     (position, foodGrid) = state
-    (x,y) = position
-    if len(state[1].asList()) != 0:
-        var = sum(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1].asList()))
-        return var
-    return 0
+    foodGrid = foodGrid.asList()
+    manhattan = lambda (a, b): abs(x - a) + abs(y - b)
+
+    h = 0
+    (x, y) = position
+    copy = sorted(foodGrid, key = manhattan)
+    while copy:
+        (a, b) = copy.pop(0)
+        h += abs(x - a) + abs(y - b)
+        (x, y) = (a, b)
+        copy.sort(key = manhattan)
+
+    (x, y) = state[0]
+    su = sum(map(manhattan, foodGrid))
+    return max([h, su])
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
