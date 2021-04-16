@@ -177,6 +177,10 @@ def generalSearch(problem, heuristic, structure, ancestors):
         for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
             if not ancestors or suc not in ancestros:
                 accionesSuc = acciones + [accion]
-                costoSuc    = costo + nuevoCosto + heuristic(suc, problem)
+                costoSuc    = costo + nuevoCosto
                 prioridad   = costo + nuevoCosto + heuristic(suc, problem)
-                push(estructura, (suc, accionesSuc, costoSuc, ancestros), prioridad)
+                if (costo + heuristic(nodo.problem) <= prioridad):
+                    push(estructura, (suc, accionesSuc, costoSuc, ancestros), prioridad)
+                else:
+                    push(estructura, (suc, accionesSuc, costoSuc, ancestros), costo + heuristic(nodo.problem))
+
