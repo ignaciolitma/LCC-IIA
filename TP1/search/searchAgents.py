@@ -353,16 +353,53 @@ def cornersHeuristic(state, problem):
     """
     corners = problem.corners # These are the corner coordinates
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
-          
+
     "*** YOUR CODE HERE ***"
-    (x,y) = state[0]
-    if len(state[1]) != 0:
-        var = sum(map(lambda pos: abs(x-pos[0]) + abs(y-pos[1]), state[1]))
-        return var
-    else:
-        return 0
-    # Esta heuristica expande 906.
-    # return len (state[1]) # Default to trivial solution
+    manhattan = lambda (a, b): abs(x - a) + abs(y - b)
+
+    h = 0
+    (x, y) = state[0]
+    copy = sorted(state[1], key = manhattan)
+    while copy:
+        (a, b) = copy.pop(0)
+        h += abs(x - a) + abs(y - b)
+        (x, y) = (a, b)
+        copy.sort(key = manhattan)
+
+    (x, y) = state[0]
+    su = sum(map(manhattan, state[1]))
+
+    return min([h, su])
+
+    """
+    MEDIUMCORNERS
+    =============
+    nullHeuristic:               costo 106, expandidos 1982.
+    cornersCount:                costo 106, expandidos 1908.
+    manhattanMin:                costo 106, expandidos 1491.
+    manhattanSum - manhattanMax: costo 106, expandidos 1401.
+    manhattanAvg:                costo 106, expandidos 1319.
+    manhattanSum - manhattanAvg: costo 106, expandidos 1195.
+    manhattanMax:                costo 106, expandidos 1139.
+    manhattanSum - manhattanMin: costo 106, expandidos 751.
+    h:                           costo 106, expandidos 692.
+    manhattanSum:                costo 106, expandidos 502.
+    all:                         costo 106, expandidos 436.
+
+    BIGCORNERS
+    ==========
+    nullHeuristic:               costo 162, expandidos 7952.
+    cornersCount:                costo 162, expandidos 7821.
+    manhattanSum - manhattanMax: costo 162, expandidos 6233.
+    manhattanMin:                costo 162, expandidos 5862.
+    manhattanAvg:                costo 162, expandidos 5195.
+    manhattanSum - manhattanAvg: costo 162, expandidos 5133.
+    manhattanMax:                costo 162, expandidos 4399.
+    manhattanSum - manhattanMin: costo 162, expandidos 2432.
+    h:                           costo 162, expandidos 1740.
+    manhattanSum:                costo 162, expandidos 1139.
+    all:                         costo 162, expandidos 1048.
+    """
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
