@@ -158,10 +158,11 @@ def generalSearch(problem, heuristic, structure, ancestors):
     nodosExpandidos = []
     estructura      = structure()
     estadoInicial   = problem.getStartState()
+    f               = heuristic(estadoInicial, problem)
 
-    push(estructura, (estadoInicial, acciones, costo, ancestros), prioridad)
+    push(estructura, (estadoInicial, acciones, costo, ancestros, f), prioridad)
     while not estructura.isEmpty():
-        (nodo, acciones, costo, ancestros) = estructura.pop()
+        (nodo, acciones, costo, ancestros, f) = estructura.pop()
 
         if problem.isGoalState(nodo):
             return acciones
@@ -178,9 +179,5 @@ def generalSearch(problem, heuristic, structure, ancestors):
             if not ancestors or suc not in ancestros:
                 accionesSuc = acciones + [accion]
                 costoSuc    = costo + nuevoCosto
-                prioridad   = costo + nuevoCosto + heuristic(suc, problem)
-                if (costo + heuristic(nodo, problem) <= prioridad):
-                    push(estructura, (suc, accionesSuc, costoSuc, ancestros), prioridad)
-                else:
-                    push(estructura, (suc, accionesSuc, costoSuc, ancestros), costo + heuristic(nodo, problem))
-
+                prioridad   = max([f, costo + nuevoCosto + heuristic(suc, problem)])
+                push(estructura, (suc, accionesSuc, costoSuc, ancestros, prioridad), prioridad)
