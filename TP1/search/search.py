@@ -155,7 +155,7 @@ def generalSearch(problem, heuristic, structure, ancestors):
     prioridad       = 0
     acciones        = []
     ancestros       = []
-    nodosExpandidos = []
+    nodosExpandidos = set()
     estructura      = structure()
     estadoInicial   = problem.getStartState()
     f               = heuristic(estadoInicial, problem)
@@ -173,7 +173,7 @@ def generalSearch(problem, heuristic, structure, ancestors):
         if ancestors:
             ancestros += [nodo]
         else:
-            nodosExpandidos.append(nodo)
+            nodosExpandidos.add(nodo)
 
         for (suc, accion, nuevoCosto) in problem.getSuccessors(nodo):
             if not ancestors or suc not in ancestros:
