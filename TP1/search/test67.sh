@@ -1,8 +1,7 @@
 #!/bin/bash
 
-files="bigCorners bigMaze capsuleClassic contestClassic contoursMaze \
-       greedySearch mediumClassic mediumCorners mediumMaze openMaze  \
-       smallMaze testSearch"
+files="bigCorners bigMaze contoursMaze greedySearch mediumCorners mediumMaze \ 
+       openMaze smallMaze testSearch"
 
 declare -a agents=("AStarCornersAgent" "AStarFoodSearchAgent")
 
