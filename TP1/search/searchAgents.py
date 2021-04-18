@@ -355,51 +355,29 @@ def cornersHeuristic(state, problem):
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
 
     "*** YOUR CODE HERE ***"
+    from itertools import permutations
+    (position, foodGrid) = state
     manhattan = lambda (a, b): abs(x - a) + abs(y - b)
 
-    h = 0
-    (x, y) = state[0]
-    copy = sorted(state[1], key = manhattan)
-    while copy:
-        (a, b) = copy.pop(0)
-        h += abs(x - a) + abs(y - b)
-        (x, y) = (a, b)
-        copy.sort(key = manhattan)
+    (x, y) = position
+    copy = sorted(foodGrid, key = manhattan)
+
+    i = 0
+    l = []
+    while copy and i < 4:
+        l.append(copy.pop(0))
+        i += 1
+
+    hs = []
+    for p in permutations(l):
+        hs.append(minPath([(x, y)] + list(p)))
+    (distancia, p1) = min(hs, key = lambda t: t[0])
+    (x, y) = p1
+    h1 = distancia + sum(map(manhattan, copy))
 
     (x, y) = state[0]
-    su = sum(map(manhattan, state[1]))
-
-    return max([h, su])
-
-    """
-    MEDIUMCORNERS
-    =============
-    nullHeuristic:               costo 106, expandidos 1982.
-    cornersCount:                costo 106, expandidos 1908.
-    manhattanMin:                costo 106, expandidos 1491.
-    manhattanAvg:                costo 106, expandidos 1319.
-    manhattanSum - manhattanMax: costo 106, expandidos 1401.
-    manhattanSum - manhattanAvg: costo 106, expandidos 1195.
-    manhattanMax:                costo 106, expandidos 1139.
-    manhattanSum - manhattanMin: costo 106, expandidos 751.
-    h:                           costo 106, expandidos 692.
-    manhattanSum:                costo 106, expandidos 502.
-    all:                         costo 106, expandidos 436.
-
-    BIGCORNERS
-    ==========
-    nullHeuristic:               costo 162, expandidos 7952.
-    cornersCount:                costo 162, expandidos 7821.
-    manhattanSum - manhattanMax: costo 162, expandidos 6233.
-    manhattanMin:                costo 162, expandidos 5862.
-    manhattanAvg:                costo 162, expandidos 5195.
-    manhattanSum - manhattanAvg: costo 162, expandidos 5133.
-    manhattanMax:                costo 162, expandidos 4399.
-    manhattanSum - manhattanMin: costo 162, expandidos 2432.
-    h:                           costo 162, expandidos 1740.
-    manhattanSum:                costo 162, expandidos 1139.
-    all:                         costo 162, expandidos 1048.
-    """
+    h2 = sum(map(manhattan, foodGrid))
+    return max([h1, h2])
 
 class AStarCornersAgent(SearchAgent):  
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
@@ -463,6 +441,18 @@ class AStarFoodSearchAgent(SearchAgent):
         self.searchFunction = lambda prob: search.aStarSearch(prob, foodHeuristic)
         self.searchType = FoodSearchProblem
 
+def minPath(l):
+    from util import manhattanDistance
+    distancia = 0
+    p1 = l.pop(0)
+
+    while l:
+        p2 = l.pop(0)
+        distancia += manhattanDistance(p1, p2)
+        p1 = p2
+
+    return (distancia, p1)
+
 def foodHeuristic(state, problem):
     """
     Your heuristic for the FoodSearchProblem goes here.
@@ -490,22 +480,30 @@ def foodHeuristic(state, problem):
     """
     
     "*** YOUR CODE HERE ***"
+    from itertools import permutations
     (position, foodGrid) = state
     foodGrid = foodGrid.asList()
     manhattan = lambda (a, b): abs(x - a) + abs(y - b)
 
-    h = 0
     (x, y) = position
     copy = sorted(foodGrid, key = manhattan)
-    while copy:
-        (a, b) = copy.pop(0)
-        h += abs(x - a) + abs(y - b)
-        (x, y) = (a, b)
-        copy.sort(key = manhattan)
+
+    i = 0
+    l = []
+    while copy and i < 4:
+        l.append(copy.pop(0))
+        i += 1
+
+    hs = []
+    for p in permutations(l):
+        hs.append(minPath([(x, y)] + list(p)))
+    (distancia, p1) = min(hs, key = lambda t: t[0])
+    (x, y) = p1
+    h1 = distancia + sum(map(manhattan, copy))
 
     (x, y) = state[0]
-    su = sum(map(manhattan, foodGrid))
-    return max([h, su])
+    h2 = sum(map(manhattan, foodGrid))
+    return max([h1])
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
