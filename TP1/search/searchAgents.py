@@ -281,7 +281,7 @@ class CornersProblem(search.SearchProblem):
         self._expanded = 0 # Number of search nodes expanded
 
         "*** YOUR CODE HERE ***"
-        
+
     def getStartState(self):
         "Returns the start state (in your state space, not the full Pacman state space)"
         "*** YOUR CODE HERE ***"
@@ -320,7 +320,7 @@ class CornersProblem(search.SearchProblem):
                 # if nextState in state[1]:
                 corners = filter(lambda x: x != nextState, state[1])
                 successors.append( ((nextState, corners), action, cost) )
-        
+
         self._expanded += 1
         return successors
 
@@ -355,31 +355,9 @@ def cornersHeuristic(state, problem):
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
 
     "*** YOUR CODE HERE ***"
-    from itertools import permutations
-    (position, foodGrid) = state
-    manhattan = lambda (a, b): abs(x - a) + abs(y - b)
+    return foodHeuristic(state, problem)
 
-    (x, y) = position
-    copy = sorted(foodGrid, key = manhattan)
-
-    i = 0
-    l = []
-    while copy and i < 4:
-        l.append(copy.pop(0))
-        i += 1
-
-    hs = []
-    for p in permutations(l):
-        hs.append(minPath([(x, y)] + list(p)))
-    (distancia, p1) = min(hs, key = lambda t: t[0])
-    (x, y) = p1
-    h1 = distancia + sum(map(manhattan, copy))
-
-    (x, y) = state[0]
-    h2 = sum(map(manhattan, foodGrid))
-    return max([h1, h2])
-
-class AStarCornersAgent(SearchAgent):  
+class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
     def __init__(self):
         self.searchFunction = lambda prob: search.aStarSearch(prob, cornersHeuristic)
@@ -444,8 +422,8 @@ class AStarFoodSearchAgent(SearchAgent):
 def minPath(l):
     from util import manhattanDistance
     distancia = 0
-    p1 = l.pop(0)
 
+    p1 = l.pop(0)
     while l:
         p2 = l.pop(0)
         distancia += manhattanDistance(p1, p2)
@@ -478,32 +456,24 @@ def foodHeuristic(state, problem):
       problem.heuristicInfo['wallCount'] = problem.walls.count()
     Subsequent calls to this heuristic can access problem.heuristicInfo['wallCount']
     """
-    
+
     "*** YOUR CODE HERE ***"
     from itertools import permutations
-    (position, foodGrid) = state
-    foodGrid = foodGrid.asList()
     manhattan = lambda (a, b): abs(x - a) + abs(y - b)
+    ((x, y), objetivos) = state
+    try:
+        objetivos = objetivos.asList()
+    except:
+        pass
 
-    (x, y) = position
-    copy = sorted(foodGrid, key = manhattan)
-
-    i = 0
-    l = []
-    while copy and i < 4:
-        l.append(copy.pop(0))
-        i += 1
-
-    hs = []
-    for p in permutations(l):
-        hs.append(minPath([(x, y)] + list(p)))
-    (distancia, p1) = min(hs, key = lambda t: t[0])
-    (x, y) = p1
-    h1 = distancia + sum(map(manhattan, copy))
+    copy = sorted(objetivos, key = manhattan)
+    hs = [ minPath([(x, y)] + list(p)) for p in permutations(copy[:4]) ]
+    (distancia, (x, y)) = min(hs, key = lambda t: t[0])
+    h1 = distancia + sum(map(manhattan, copy[4:]))
 
     (x, y) = state[0]
-    h2 = sum(map(manhattan, foodGrid))
-    return max([h1])
+    h2 = sum(map(manhattan, objetivos))
+    return max([h1, h2])
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
