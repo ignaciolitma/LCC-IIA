@@ -49,6 +49,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#DM">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Roles"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Jugadores"/>
     </owl:Class>
     
 
@@ -79,6 +80,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Juegos_de_Mesa">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Juegos"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Videojuegos"/>
     </owl:Class>
     
 
@@ -87,6 +89,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Jugadores">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Roles"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#NPC"/>
     </owl:Class>
     
 
@@ -188,6 +191,25 @@
     <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Videojuegos">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Juegos"/>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Consumables"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Equipamiento"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Otros"/>
+        </owl:members>
+    </rdf:Description>
 </rdf:RDF>
 
 
