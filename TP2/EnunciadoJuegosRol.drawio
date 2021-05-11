@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-05-11T20:37:52.179Z" agent="5.0 (Windows)" etag="fIqtmquA3TWLWlSHeavI" version="14.6.11" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-11T20:39:46.808Z" agent="5.0 (Windows)" etag="NB157mdZwuydqUUuFj4Z" version="14.6.11" type="github">
   <diagram id="ILm2hmo1M7NyO-sgsOFn" name="Page-1">
-    <mxGraphModel dx="3076" dy="1932" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2635" dy="1695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -34,7 +34,7 @@
         <mxCell id="UJQYvrC97F9tNQ-9GaD7-6" value="&lt;div&gt;Juegos de mesa&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-720" y="405" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="UJQYvrC97F9tNQ-9GaD7-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="UJQYvrC97F9tNQ-9GaD7-7" edge="1">
+        <mxCell id="UJQYvrC97F9tNQ-9GaD7-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" source="UJQYvrC97F9tNQ-9GaD7-7" edge="1" target="UJQYvrC97F9tNQ-9GaD7-3">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-782" y="220" as="targetPoint" />
           </mxGeometry>
