@@ -82,7 +82,14 @@
     <!-- http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Se_Encuentran -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Se_Encuentran">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Objetos"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#NPC"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Objetos"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Escenario"/>
     </owl:ObjectProperty>
     
@@ -390,7 +397,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#NPC">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Roles"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Capacidad"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Objetos"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Personaje_Jugable"/>
     </owl:Class>
     
 
@@ -540,6 +554,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Elfo">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</Capacidad>
     </owl:NamedIndividual>
     
 
@@ -548,6 +563,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Enano">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</Capacidad>
     </owl:NamedIndividual>
     
 
@@ -558,6 +574,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Equipamiento"/>
         <Daño rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</Daño>
         <Defensa rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</Defensa>
+        <Peso rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</Peso>
         <Precio rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</Precio>
     </owl:NamedIndividual>
     
@@ -632,6 +649,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Gnomo">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</Capacidad>
     </owl:NamedIndividual>
     
 
@@ -648,6 +666,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Humano">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</Capacidad>
     </owl:NamedIndividual>
     
 
@@ -737,7 +756,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Mutante">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
-        <Tiene rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Robot"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</Capacidad>
     </owl:NamedIndividual>
     
 
@@ -757,6 +776,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Necrofago">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</Capacidad>
     </owl:NamedIndividual>
     
 
@@ -867,6 +887,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Robot">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</Capacidad>
     </owl:NamedIndividual>
     
 
@@ -923,7 +944,21 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Virgil">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#NPC"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Tiene"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Clase"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Tiene"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Raza"/>
+            </owl:Restriction>
+        </rdf:type>
         <Utiliza rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Escopeta_de_doble_caño"/>
+        <Utiliza rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Subfusil"/>
+        <Capacidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</Capacidad>
     </owl:NamedIndividual>
     
 
