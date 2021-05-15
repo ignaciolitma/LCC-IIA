@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-05-15T19:53:17.216Z" agent="5.0 (X11)" etag="AfSu4coFB0hSrSrDQ69b" version="14.6.10" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-15T20:00:34.766Z" agent="5.0 (X11)" etag="1XPIBfWExXjuROVQoMPx" version="14.6.10" type="github">
   <diagram id="ILm2hmo1M7NyO-sgsOFn" name="Page-1">
     <mxGraphModel dx="2531" dy="2121" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -283,7 +283,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="UJQYvrC97F9tNQ-9GaD7-63" value="Clase" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="UJQYvrC97F9tNQ-9GaD7-63" value="&lt;div&gt;Clase&lt;/div&gt;#Clase:String" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1320" y="870" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="UJQYvrC97F9tNQ-9GaD7-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.333;entryY=0.975;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="UJQYvrC97F9tNQ-9GaD7-65" target="UJQYvrC97F9tNQ-9GaD7-15" edge="1">
@@ -295,7 +295,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="UJQYvrC97F9tNQ-9GaD7-65" value="Raza" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="UJQYvrC97F9tNQ-9GaD7-65" value="&lt;div&gt;Raza&lt;/div&gt;&lt;div&gt;#Raza:String&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1070" y="870" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
