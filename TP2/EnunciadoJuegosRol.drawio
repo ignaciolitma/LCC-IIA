@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-05-16T19:01:38.056Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" etag="4hdoVywZxt8G8LN_m2I3" version="14.6.13" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-16T19:03:48.181Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" etag="KnoR8zW-dSR9362S3QRz" version="14.6.13" type="github">
   <diagram id="ILm2hmo1M7NyO-sgsOFn" name="Page-1">
     <mxGraphModel dx="2249" dy="1963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -467,8 +467,8 @@
             <mxPoint x="510" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CvNJtpGoJNGtSQXnyby4-17" value="Armas de Fuego" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="570" y="630" width="90" height="60" as="geometry" />
+        <mxCell id="CvNJtpGoJNGtSQXnyby4-17" value="Armas de Fuego&lt;br&gt;#Defensa = 0&lt;br&gt;#Salud = 0" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="550" y="630" width="120" height="70" as="geometry" />
         </mxCell>
         <mxCell id="CvNJtpGoJNGtSQXnyby4-20" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="CvNJtpGoJNGtSQXnyby4-18" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -481,8 +481,8 @@
             <mxPoint x="539" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CvNJtpGoJNGtSQXnyby4-18" value="&lt;div&gt;Armas Blancas&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="670" y="630" width="80" height="65" as="geometry" />
+        <mxCell id="CvNJtpGoJNGtSQXnyby4-18" value="&lt;div&gt;Armas Blancas&lt;/div&gt;&lt;div&gt;#Defensa = 0&lt;br&gt;#Salud = 0&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="630" width="100" height="70" as="geometry" />
         </mxCell>
         <mxCell id="CvNJtpGoJNGtSQXnyby4-22" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="CvNJtpGoJNGtSQXnyby4-21" target="CvNJtpGoJNGtSQXnyby4-11" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -512,13 +512,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="IkymjTVyEV-GXIHBk388-2" value="&lt;div&gt;Subfusil&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="570" y="760" width="80" height="80" as="geometry" />
+          <mxGeometry x="560" y="760" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="IkymjTVyEV-GXIHBk388-6" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="IkymjTVyEV-GXIHBk388-5" target="CvNJtpGoJNGtSQXnyby4-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="IkymjTVyEV-GXIHBk388-5" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mosquete&lt;/div&gt;&lt;div&gt;Laser&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="660" y="760" width="80" height="80" as="geometry" />
+          <mxGeometry x="690" y="760" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="IkymjTVyEV-GXIHBk388-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="IkymjTVyEV-GXIHBk388-7" target="UJQYvrC97F9tNQ-9GaD7-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -552,17 +552,20 @@
         <mxCell id="rZdIcUO9GPy4Mxk8KI-I-5" value="Bunker" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-240" y="680" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="rZdIcUO9GPy4Mxk8KI-I-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" source="rZdIcUO9GPy4Mxk8KI-I-10" target="UJQYvrC97F9tNQ-9GaD7-17">
+        <mxCell id="rZdIcUO9GPy4Mxk8KI-I-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="rZdIcUO9GPy4Mxk8KI-I-10" target="rZdIcUO9GPy4Mxk8KI-I-12">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="480" y="700" as="targetPoint" />
+            <mxPoint x="468" y="650" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="500" y="658" />
-              <mxPoint x="468" y="658" />
+              <mxPoint x="540" y="800" />
+              <mxPoint x="450" y="800" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="rZdIcUO9GPy4Mxk8KI-I-10" value="&lt;div&gt;Casco&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="460" y="760" width="80" height="80" as="geometry" />
+          <mxGeometry x="500" y="830" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="rZdIcUO9GPy4Mxk8KI-I-12" value="&lt;div&gt;Equipamiento&lt;/div&gt;&lt;div&gt;#Daño: Integer&lt;/div&gt;&lt;div&gt;#Defensa: Integer&lt;/div&gt;&lt;div&gt;#Salud: Integer&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="580" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
