@@ -419,9 +419,7 @@
 
     <!-- http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Escenario -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Escenario">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Locaciones"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Escenario"/>
     
 
 
@@ -473,9 +471,7 @@
 
     <!-- http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Locaciones -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Locaciones">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Mapa"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Locaciones"/>
     
 
 
@@ -489,16 +485,13 @@
 
     <!-- http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Mapa -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Mapa">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Campaña"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Mapa"/>
     
 
 
     <!-- http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Misiones -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Misiones">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Campaña"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Sesion"/>
     </owl:Class>
     
@@ -587,9 +580,7 @@
 
     <!-- http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Sesion -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Sesion">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Campaña"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Sesion"/>
     
 
 
@@ -782,6 +773,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Fuera_del_tiempo">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Misiones"/>
         <Pertenecen rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Acto_1"/>
+        <EsOpcional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</EsOpcional>
     </owl:NamedIndividual>
     
 
@@ -816,6 +808,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Joya_de_la_Commonwealth">
         <rdf:type rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Misiones"/>
         <Pertenecen rdf:resource="http://www.semanticweb.org/ilitmanovich/ontologies/2021/4/untitled-ontology-6#Acto_1"/>
+        <EsOpcional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</EsOpcional>
     </owl:NamedIndividual>
     
 
