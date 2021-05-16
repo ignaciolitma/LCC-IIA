@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-05-16T12:19:19.805Z" agent="5.0 (X11)" etag="nT9CzrLtF08F3-SrmZ7q" version="14.6.13" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-16T12:20:21.710Z" agent="5.0 (X11)" etag="fLzWd9ICZDiuh5tirnHA" version="14.6.13" type="github">
   <diagram id="ILm2hmo1M7NyO-sgsOFn" name="Page-1">
-    <mxGraphModel dx="1093" dy="1497" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1927" dy="2529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -59,6 +59,21 @@
             </Array>
             <mxPoint x="420" y="390" as="sourcePoint" />
             <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CvNJtpGoJNGtSQXnyby4-31" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=24;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#f8cecc;strokeColor=#b85450;" edge="1" parent="1" source="UJQYvrC97F9tNQ-9GaD7-11" target="UJQYvrC97F9tNQ-9GaD7-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1189.9999999999995" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1040" y="290" />
+              <mxPoint x="1040" y="390" />
+              <mxPoint x="1610" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CvNJtpGoJNGtSQXnyby4-32" value="EsLlevadoPor" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" vertex="1" connectable="0" parent="CvNJtpGoJNGtSQXnyby4-31">
+          <mxGeometry x="0.2451" y="-4" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="UJQYvrC97F9tNQ-9GaD7-11" value="&lt;div&gt;Objetos&lt;/div&gt;&lt;div&gt;#Nombre: String&lt;br&gt;#Peso: Integer&lt;br&gt;&lt;/div&gt;&lt;div&gt;#Precio: Integer&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
