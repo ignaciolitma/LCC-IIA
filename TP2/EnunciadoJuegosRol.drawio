@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-05-17T00:38:56.855Z" agent="5.0 (Windows)" etag="7Ol_lY3ZNVkwFgsq2c83" version="14.6.13" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-17T00:39:27.465Z" agent="5.0 (Windows)" etag="aFFzbkJlUqkGCuAaNnkW" version="14.6.13" type="github">
   <diagram id="ILm2hmo1M7NyO-sgsOFn" name="Page-1">
-    <mxGraphModel dx="2687" dy="1754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3117" dy="1997" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -205,7 +205,7 @@
         </mxCell>
         <mxCell id="CvNJtpGoJNGtSQXnyby4-29" value="&lt;font style=&quot;font-size: 24px&quot;&gt;Tiene&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="6iOq0DySqWm2OIO27Hgv-15" vertex="1" connectable="0">
           <mxGeometry x="-0.7359" y="47" relative="1" as="geometry">
-            <mxPoint x="-47" y="26" as="offset" />
+            <mxPoint x="1013" y="287" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="yNY0Yc5KAyrhEgwj456O-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" source="UJQYvrC97F9tNQ-9GaD7-15" target="UJQYvrC97F9tNQ-9GaD7-14" edge="1">
@@ -371,12 +371,12 @@
           <mxGeometry x="1840" y="920" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="6iOq0DySqWm2OIO27Hgv-21" value="&lt;font style=&quot;font-size: 24px&quot;&gt;Tiene&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="1640" y="780" as="geometry">
+          <mxGeometry x="1630" y="780" as="geometry">
             <mxPoint x="256" y="-122" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="6iOq0DySqWm2OIO27Hgv-22" value="Tiene" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="1686.5" y="540" as="geometry">
+          <mxGeometry x="1860" y="1020" as="geometry">
             <mxPoint x="480" y="-246" as="offset" />
           </mxGeometry>
         </mxCell>
