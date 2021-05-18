@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-05-18T20:13:55.938Z" agent="5.0 (Windows)" etag="wbf4HXGXBXmyw5v7LGZS" version="14.6.13" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-18T20:14:16.643Z" agent="5.0 (Windows)" etag="AI7uJ4q-w6PQ3V2k72we" version="14.6.13" type="github">
   <diagram id="ILm2hmo1M7NyO-sgsOFn" name="Page-1">
     <mxGraphModel dx="2197" dy="1919" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -445,7 +445,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="CvNJtpGoJNGtSQXnyby4-17" value="Armas de Fuego&lt;br&gt;#Defensa = 0&lt;br&gt;#Salud = 0" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="350" y="920" width="120" height="70" as="geometry" />
+          <mxGeometry x="354" y="790" width="120" height="70" as="geometry" />
         </mxCell>
         <mxCell id="CvNJtpGoJNGtSQXnyby4-20" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="CvNJtpGoJNGtSQXnyby4-18" target="UJQYvrC97F9tNQ-9GaD7-17" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -453,13 +453,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="CvNJtpGoJNGtSQXnyby4-18" value="&lt;div&gt;Armas Blancas&lt;/div&gt;&lt;div&gt;#Defensa = 0&lt;br&gt;#Salud = 0&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="600" y="920" width="100" height="70" as="geometry" />
+          <mxGeometry x="520" y="780" width="100" height="70" as="geometry" />
         </mxCell>
         <mxCell id="rZdIcUO9GPy4Mxk8KI-I-13" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="rZdIcUO9GPy4Mxk8KI-I-12" target="UJQYvrC97F9tNQ-9GaD7-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="rZdIcUO9GPy4Mxk8KI-I-12" value="&lt;div&gt;Armadura&lt;/div&gt;&lt;div&gt;#Daño = 0&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="280" y="900" width="80" height="50" as="geometry" />
+          <mxGeometry x="270" y="750" width="80" height="50" as="geometry" />
         </mxCell>
         <mxCell id="APLW-yHg4ax8Rn-LBmu7-10" value="" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;gradientColor=#b3b3b3;fillColor=#f5f5f5;" parent="1" source="UJQYvrC97F9tNQ-9GaD7-41" target="UJQYvrC97F9tNQ-9GaD7-54" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
