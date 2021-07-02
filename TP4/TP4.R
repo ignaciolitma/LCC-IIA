@@ -23,7 +23,7 @@ clasificacion <- createFolds(t(dataSet[,10]), k=5, ) # Dividimos el data set en 
 #grupoEntrenamiento <- dataSet[clasificacion[[3]], ] # obtenemos los valores del dataset del grupo 3
 
 entrenamiento <- dataSet[setdiff(seq(1:dim(dataSet)[1]), clasificacion[[3]]), ] 
-entrenamientoFit <- rpart(Clase~Aluminio+Magnesio+Bario+R.I+Sodio, data = entrenamiento, parms = list(split = "gini"))
+entrenamientoFit <- rpart(Clase~Aluminio+Magnesio+Bario+R.I+Sodio, data = entrenamiento, parms = list(split = "information"))
 prediccion <- predict(entrenamientoFit, dataSet[clasificacion[[3]], -10], type="class")
 confusionMatrix(prediccion, dataSet[clasificacion[[3]],10])
 fancyRpartPlot(entrenamientoFit, caption=NULL)
